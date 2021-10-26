@@ -5,6 +5,10 @@ import br.com.cwi.restassuredapitest.suites.AllTests;
 import br.com.cwi.restassuredapitest.suites.ContractTests;
 import br.com.cwi.restassuredapitest.tests.booking.requests.GetBookingRequest;
 import br.com.cwi.restassuredapitest.utils.Utils;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -13,13 +17,16 @@ import java.io.File;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.greaterThan;
 
+@Feature("Feature - Retorno de reservas")
 public class GetBookingTest extends BaseTest {
 
     GetBookingRequest getBookingRequest = new GetBookingRequest();
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class})
-    public void validaListagemdeIdsDasReservas(){
+    @DisplayName("Listar ids de reservas")
+    public void validaListagemdeIdsDasReservas() throws Exception{
 
         getBookingRequest.bookingReturnIds()
                 .then()
@@ -28,8 +35,10 @@ public class GetBookingTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, ContractTests.class})
-    public void validaSchemaDaListagemDeReservas(){
+    @DisplayName("Garantir o schema de retorno da listagem de reservas")
+    public void validaSchemaDaListagemDeReservas() throws Exception{
 
         getBookingRequest.bookingReturnIds()
                 .then()
