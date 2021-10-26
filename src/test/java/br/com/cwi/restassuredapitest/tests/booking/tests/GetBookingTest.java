@@ -3,6 +3,7 @@ package br.com.cwi.restassuredapitest.tests.booking.tests;
 import br.com.cwi.restassuredapitest.base.BaseTest;
 import br.com.cwi.restassuredapitest.suites.AllTests;
 import br.com.cwi.restassuredapitest.suites.ContractTests;
+import br.com.cwi.restassuredapitest.suites.SchemaTests;
 import br.com.cwi.restassuredapitest.tests.booking.requests.GetBookingRequest;
 import br.com.cwi.restassuredapitest.utils.Utils;
 import io.qameta.allure.Feature;
@@ -36,7 +37,7 @@ public class GetBookingTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({AllTests.class, ContractTests.class})
+    @Category({AllTests.class, ContractTests.class, SchemaTests.class})
     @DisplayName("Garantir o schema de retorno da listagem de reservas")
     public void validaSchemaDaListagemDeReservas() throws Exception{
 

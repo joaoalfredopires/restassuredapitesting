@@ -15,8 +15,10 @@ I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapit
 I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapitest\suites\AcceptanceTests.java
 I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapitest\runners\SecutityTests.java
 I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapitest\tests\booking\requests\payloads\BookingPayloads.java
+I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapitest\suites\HealthCheckTests.java
 I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapitest\runners\AllTests.java
 I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapitest\suites\AllTests.java
 I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapitest\utils\Utils.java
+I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapitest\runners\HealthCheckTests.java
 I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapitest\tests\auth\requests\payloads\AuthPayloads.java
 I:\RESET\Projetos\restassuredapitesting\src\test\java\br\com\cwi\restassuredapitest\tests\ping\requests\GetPingRequest.java

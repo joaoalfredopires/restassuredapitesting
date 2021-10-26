@@ -2,6 +2,7 @@ package br.com.cwi.restassuredapitest.tests.ping.tests;
 
 import br.com.cwi.restassuredapitest.base.BaseTest;
 import br.com.cwi.restassuredapitest.suites.AllTests;
+import br.com.cwi.restassuredapitest.suites.HealthCheckTests;
 import br.com.cwi.restassuredapitest.suites.SmokeTests;
 import br.com.cwi.restassuredapitest.tests.ping.requests.GetPingRequest;
 import io.qameta.allure.Feature;
@@ -19,7 +20,7 @@ public class GetPingTest extends BaseTest {
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({AllTests.class, SmokeTests.class})
+    @Category({AllTests.class, SmokeTests.class, HealthCheckTests.class})
     @DisplayName("Verificar se a api está online")
     public void validaApiOnline() throws Exception{
 
