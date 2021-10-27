@@ -1,6 +1,7 @@
 package br.com.cwi.restassuredapitest.tests.booking.tests;
 
 import br.com.cwi.restassuredapitest.base.BaseTest;
+import br.com.cwi.restassuredapitest.suites.AcceptanceTests;
 import br.com.cwi.restassuredapitest.suites.AllTests;
 import br.com.cwi.restassuredapitest.suites.ContractTests;
 import br.com.cwi.restassuredapitest.suites.SchemaTests;
@@ -16,34 +17,63 @@ import org.junit.experimental.categories.Category;
 import java.io.File;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
-import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.*;
 
 @Feature("Feature - Retorno de reservas")
 public class GetBookingTest extends BaseTest {
 
     GetBookingRequest getBookingRequest = new GetBookingRequest();
 
+    int primeroId = getBookingRequest.bookingReturnIds()
+            .then()
+            .statusCode(200)
+            .extract()
+            .path("[0].bookingid");
+
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({AllTests.class})
+    @Category({AllTests.class, AcceptanceTests.class})
     @DisplayName("Listar ids de reservas")
-    public void validaListagemdeIdsDasReservas() throws Exception{
+    public void validadeBookingIdList() throws Exception{
 
         getBookingRequest.bookingReturnIds()
                 .then()
                 .statusCode(200)
-                .body("size()", greaterThan(0));
+                .body("firstname", notNullValue());
+    }
+
+    @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @Category({AllTests.class, AcceptanceTests.class})
+    @DisplayName("Listar uma reserva específica")
+    public void validateSpecificBooking() throws Exception{
+        getBookingRequest.bookingReturnSpecificBooking(primeroId)
+                .then()
+                .statusCode(200).log().all()
+                .body("firstname", notNullValue(), "lastname", notNullValue());
     }
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, ContractTests.class, SchemaTests.class})
     @DisplayName("Garantir o schema de retorno da listagem de reservas")
-    public void validaSchemaDaListagemDeReservas() throws Exception{
+    public void schemaValidationOfBookingList() throws Exception{
 
         getBookingRequest.bookingReturnIds()
                 .then()
                 .statusCode(200)
                 .body(matchesJsonSchema(new File(Utils.getSchemaBasePath("booking", "bookings"))));
+    }
+
+    @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @Category({AllTests.class, ContractTests.class, SchemaTests.class})
+    @DisplayName("Garantir o schema de retorno de uma reserva específica")
+    public void schemaValidationOfSpecificBooking() throws Exception{
+
+        getBookingRequest.bookingReturnSpecificBooking(primeroId)
+                .then()
+                .statusCode(200)
+                .body(matchesJsonSchema(new File(Utils.getSchemaBasePath("booking", "specificbooking"))));
     }
 }

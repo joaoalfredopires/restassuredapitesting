@@ -22,7 +22,7 @@ public class PostAuthTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, SmokeTests.class})
     @DisplayName("Retornar um token para o usuário")
-    public void validaRetornoDeTokenParaUsuario() throws Exception{
+    public void validateTokenReturnToUser() throws Exception{
         postAuthRequest.tokenReturn()
                 .then()
                 .statusCode(200)

@@ -22,7 +22,7 @@ public class GetPingTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, SmokeTests.class, HealthCheckTests.class})
     @DisplayName("Verificar se a api está online")
-    public void validaApiOnline() throws Exception{
+    public void validatenApiOnline() throws Exception{
 
         getPingRequest.pingReturnApi()
                 .then()

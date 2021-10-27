@@ -20,4 +20,14 @@ public class BookingPayloads {
 
         return payload;
     }
+
+    public static JSONObject jsonAuthLogin(){
+
+        JSONObject payloadLogin = new JSONObject();
+
+        payloadLogin.put("username", "admin");
+        payloadLogin.put("password", "password123");
+
+        return payloadLogin;
+    }
 }
