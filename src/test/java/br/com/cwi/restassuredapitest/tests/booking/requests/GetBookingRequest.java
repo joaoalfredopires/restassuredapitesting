@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import static io.restassured.RestAssured.given;
 
@@ -45,7 +45,7 @@ public class GetBookingRequest {
     }
 
     @Step("Retorna as reservas com data de checkin maior ou igual a informada")
-    public Response bookingReturnFilterCheckin(String date){
+    public Response bookingReturnFilterCheckin(LocalDate date){
 
         return given()
                 .when()
@@ -53,10 +53,26 @@ public class GetBookingRequest {
     }
 
     @Step("Retorna as reservas com data de checkout maior ou igual a informada")
-    public Response bookingReturnFilterCheckout(String date){
+    public Response bookingReturnFilterCheckout(LocalDate date){
 
         return given()
                 .when()
                 .get("booking?checkout=" + date);
+    }
+
+    @Step("Retorna as reservas aplicando dois filtros de checkout na requisição")
+    public Response bookingReturnFilterCheckoutAndCheckout(LocalDate date1, LocalDate date2){
+
+        return given()
+                .when()
+                .get("booking?checkout=" + date1 + "&checkout=" +date2);
+    }
+
+    @Step("Retorna as reservas aplicando dois filtros de checkout na requisição")
+    public Response bookingReturnFilterNameAndCheckinAndCheckout(String firstname, String lastname, LocalDate date1, LocalDate date2){
+
+        return given()
+                .when()
+                .get("booking?firstname="+ firstname +"&lastname="+ lastname +"&checkout="+ date1 +"&checkin="+date2);
     }
 }
