@@ -37,7 +37,7 @@ public class PutBookingTest extends BaseTest {
 
         putBookingRequest.updateBookingWithToken(primeroId, postAuthRequest.getToken())
                  .then()
-                .statusCode(200).log().all()
+                .statusCode(200)
                 .body("size()", greaterThan(0));
     }
 
@@ -55,7 +55,7 @@ public class PutBookingTest extends BaseTest {
 
         putBookingRequest.updateBookingWithBasicAuthorization(primeroId)
                 .then()
-                .statusCode(200).log().all()
+                .statusCode(200)
                 .body("size()", greaterThan(0));
     }
 
@@ -77,7 +77,7 @@ public class PutBookingTest extends BaseTest {
 
         putBookingRequest.updateBookingWithouHeaderToken(primeroId)
                 .then()
-                .statusCode(200).log().all()
+                .statusCode(200)
                 .body("size()", greaterThan(0));
         //Este teste falha propositalmente pois ao não informar o token retorna o statusCode(403)
     }
@@ -96,7 +96,7 @@ public class PutBookingTest extends BaseTest {
 
         putBookingRequest.updateBookingWithToken(primeroId, "token=tokeninvalido123")
                 .then()
-                .statusCode(200).log().all()
+                .statusCode(200)
                 .body("size()", greaterThan(0));
         //Este teste falha propositalmente pois ao informar token inválido retorna o statusCode(403)
     }
@@ -109,7 +109,7 @@ public class PutBookingTest extends BaseTest {
 
         putBookingRequest.updateBookingWithToken(99999998, postAuthRequest.getToken())
                 .then()
-                .statusCode(200).log().all()
+                .statusCode(200)
                 .body("size()", greaterThan(0));
         //Este teste falha propositalmente pois ao informar uma reserva inexistente retorna o statusCode(403)
     }

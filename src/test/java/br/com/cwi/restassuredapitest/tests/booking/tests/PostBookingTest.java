@@ -30,7 +30,7 @@ public class PostBookingTest extends BaseTest {
 
         postBookingRequest.createBooking()
                 .then()
-                .statusCode(200).log().all()
+                .statusCode(200)
                 .body("size()", greaterThan(0));
 
     }
@@ -38,6 +38,8 @@ public class PostBookingTest extends BaseTest {
     //Testes da suíte Acceptance do desafio - Fim
 
     /*----------------------------------------------------------------------------------------------------------------*/
+
+    //Testes da suíte E2e do desafio - Início
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
@@ -67,12 +69,13 @@ public class PostBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, End2EndTests.class})
-    @DisplayName("Validar a criação de uma nova reserva com o header Accept inválido")
+    @DisplayName("Validar statusCode de erro ao tentar fazer uma nova reserva com o header Accept inválido")
     public void validateBookingCreationWithInvalidAcceptHeader() throws Exception {
 
         postBookingRequest.createBookingWithInvalidAcceptHeader()
                 .then()
                 .statusCode(418);
+        //Pelomenos essa pegadinha não deixa dúvidas...
 
     }
 
@@ -84,18 +87,20 @@ public class PostBookingTest extends BaseTest {
 
         postBookingRequest.createBooking()
                 .then()
-                .statusCode(200).log().all()
+                .statusCode(200)
                 .body("size()", greaterThan(0));
 
         postBookingRequest.createBooking()
                 .then()
-                .statusCode(200).log().all()
+                .statusCode(200)
                 .body("size()", greaterThan(0));
 
         postBookingRequest.createBooking()
                 .then()
-                .statusCode(200).log().all()
+                .statusCode(200)
                 .body("size()", greaterThan(0));
 
     }
+
+    //Testes da suíte E2e do desafio - Fim
 }

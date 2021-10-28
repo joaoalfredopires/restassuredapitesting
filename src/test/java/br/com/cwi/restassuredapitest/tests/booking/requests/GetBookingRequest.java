@@ -82,6 +82,6 @@ public class GetBookingRequest {
         return given()
                 .header("Accept","application/json")
                 .when()
-                .get("booking#fristnome=Batatinha123*lastnamis=Batima");
+                .get("booking?fristnome=Batatinha123*lastnamis=Batima");
     }
 }

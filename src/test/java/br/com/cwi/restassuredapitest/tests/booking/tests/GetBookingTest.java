@@ -81,7 +81,7 @@ import static org.hamcrest.Matchers.*;
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
-    @Category({AllTests.class, AcceptanceTests.class})
+    @Category({AllTests.class, AcceptanceTests.class, SmokeTests.class})
     @DisplayName("Listar ids de reservas")
     public void validadeBookingIdList() throws Exception{
 
@@ -93,7 +93,7 @@ import static org.hamcrest.Matchers.*;
 
     @Test
     @Severity(SeverityLevel.CRITICAL)
-    @Category({AllTests.class, AcceptanceTests.class})
+    @Category({AllTests.class, AcceptanceTests.class, SmokeTests.class})
     @DisplayName("Listar uma reserva específica")
     public void validateSpecificBooking() throws Exception{
         getBookingRequest.bookingReturnSpecificBooking(primeroId)
@@ -167,7 +167,7 @@ import static org.hamcrest.Matchers.*;
     public void validadeBookingIdListFilterNameCheckinCheckout() throws Exception{
 
         getBookingRequest.bookingReturnFilterNameAndCheckinAndCheckout(faker.dragonBall().character(),faker.elderScrolls().lastName(), randomCheckinDate, randomCheckoutDate)
-                .then().log().all()
+                .then()
                 .statusCode(200);
 
     }
@@ -188,6 +188,7 @@ import static org.hamcrest.Matchers.*;
                 .then()
                 .statusCode(500);
                 //Tendo o "?" que indica filtro, qualquer coisa que seja escrita após retorna <200> com a lista de ids
+                //Trocando o "?" por outro caractere ele retorna <404>, falhando da mesma forma
     }
 
     //Testes da suíte E2e do desafio - Fim
