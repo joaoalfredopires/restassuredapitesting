@@ -1,7 +1,9 @@
 package br.com.cwi.restassuredapitest.runners;
 
 import br.com.cwi.restassuredapitest.tests.auth.tests.PostAuthTest;
+import br.com.cwi.restassuredapitest.tests.booking.tests.DeleteBookingTest;
 import br.com.cwi.restassuredapitest.tests.booking.tests.GetBookingTest;
+import br.com.cwi.restassuredapitest.tests.booking.tests.PostBookingTest;
 import br.com.cwi.restassuredapitest.tests.booking.tests.PutBookingTest;
 import br.com.cwi.restassuredapitest.tests.ping.tests.GetPingTest;
 import org.junit.experimental.categories.Categories;
@@ -13,8 +15,11 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         GetPingTest.class,
         GetBookingTest.class,
-        PostAuthTest.class,
-        PutBookingTest.class
+        DeleteBookingTest.class,
+        PostBookingTest.class,
+        PutBookingTest.class,
+        PostAuthTest.class
+
 })
 public class AllTests {
 }

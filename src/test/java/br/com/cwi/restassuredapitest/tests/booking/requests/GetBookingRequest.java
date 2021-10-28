@@ -68,11 +68,20 @@ public class GetBookingRequest {
                 .get("booking?checkout=" + date1 + "&checkout=" +date2);
     }
 
-    @Step("Retorna as reservas aplicando dois filtros de checkout na requisição")
+    @Step("Retorna as reservas aplicando os filtros: firstname, lastname, chackin e checkout na requisição")
     public Response bookingReturnFilterNameAndCheckinAndCheckout(String firstname, String lastname, LocalDate date1, LocalDate date2){
 
         return given()
                 .when()
                 .get("booking?firstname="+ firstname +"&lastname="+ lastname +"&checkout="+ date1 +"&checkin="+date2);
+    }
+
+    @Step("Tenta retornar uma reserva específica utilizando um filtro formatado incorretamente")
+    public Response bookingReturnWronglyFormattedFilter(){
+
+        return given()
+                .header("Accept","application/json")
+                .when()
+                .get("booking#fristnome=Batatinha123*lastnamis=Batima");
     }
 }

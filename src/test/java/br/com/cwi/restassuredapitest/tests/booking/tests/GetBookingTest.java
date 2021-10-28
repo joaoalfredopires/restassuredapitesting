@@ -1,10 +1,7 @@
 package br.com.cwi.restassuredapitest.tests.booking.tests;
 
 import br.com.cwi.restassuredapitest.base.BaseTest;
-import br.com.cwi.restassuredapitest.suites.AcceptanceTests;
-import br.com.cwi.restassuredapitest.suites.AllTests;
-import br.com.cwi.restassuredapitest.suites.ContractTests;
-import br.com.cwi.restassuredapitest.suites.SchemaTests;
+import br.com.cwi.restassuredapitest.suites.*;
 import br.com.cwi.restassuredapitest.tests.booking.requests.GetBookingRequest;
 import br.com.cwi.restassuredapitest.utils.Utils;
 import com.github.javafaker.Faker;
@@ -22,10 +19,11 @@ import java.util.Random;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
 
-@Feature("Feature - Retorno de reservas")
-public class GetBookingTest extends BaseTest {
 
-    //Instancialização de classes usadas nos testes
+    @Feature("Feature - Retorno de reservas")
+    public class GetBookingTest extends BaseTest {
+
+    //Instancialização de classes usadas nos testes -  Início
 
     GetBookingRequest getBookingRequest = new GetBookingRequest();
 
@@ -45,8 +43,11 @@ public class GetBookingTest extends BaseTest {
             .extract()
             .path("[0].bookingid");
 
+    //Instancialização de classes usadas nos testes -  Fim
 
-    //Testes da suíte schema do desafio - início
+    /*----------------------------------------------------------------------------------------------------------------*/
+
+    //Testes da suíte Schema do desafio - Início
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
@@ -72,7 +73,11 @@ public class GetBookingTest extends BaseTest {
                 .body(matchesJsonSchema(new File(Utils.getSchemaBasePath("booking", "specificbooking"))));
     }
 
-    //Testes da suíte schema do desafio - fim
+    //Testes da suíte Schema do desafio - Fim
+
+    /*----------------------------------------------------------------------------------------------------------------*/
+
+    //Testes da suíte Acceptance do desafio - Início
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
@@ -167,4 +172,23 @@ public class GetBookingTest extends BaseTest {
 
     }
 
+    //Testes da suíte Acceptance do desafio - Fim
+
+    /*----------------------------------------------------------------------------------------------------------------*/
+
+    //Testes da suíte E2e do desafio - Inicio
+
+    @Test
+    @Severity(SeverityLevel.TRIVIAL)
+    @Category({AllTests.class, End2EndTests.class})
+    @DisplayName("Validar retorno de erro de servidor quando enviar filtro mal formatado")
+    public void validadeServerErrorWhenFilterIsWronglyFormatted() throws Exception{
+
+        getBookingRequest.bookingReturnWronglyFormattedFilter()
+                .then()
+                .statusCode(500);
+                //Tendo o "?" que indica filtro, qualquer coisa que seja escrita após retorna <200> com a lista de ids
+    }
+
+    //Testes da suíte E2e do desafio - Fim
 }

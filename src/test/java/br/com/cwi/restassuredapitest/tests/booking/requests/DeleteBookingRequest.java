@@ -4,12 +4,13 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 
+
 import static io.restassured.RestAssured.given;
 
 public class DeleteBookingRequest {
 
     @Step("Deleta a reserva de acordo com o id da lista de reservas")
-    public Response deleteBookingToken(int id, String token){
+    public Response deleteBookingWithToken(int id, String token){
 
         return given()
                 .header("Content-Type", "application/json")
@@ -18,4 +19,5 @@ public class DeleteBookingRequest {
                 .delete("booking/"+ id);
 
     }
+
 }
