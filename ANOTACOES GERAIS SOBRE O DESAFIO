@@ -1,0 +1,58 @@
+
+##############  - DESAFIO CONCLUÍDO COM SUCESSO -  ##############
+
+        Depois de muito batalhar com um notebook que desligava sem aviso prévio por superaquecimento cá estamos ao fim
+        de mais um desafio... \o/
+
+        Comentários:
+
+        Geral:
+            - Todos os testes que estão falhando são propositais. No desafio é pedido pra validar alguns cenários
+            que retornam erro como cenários válidos. Só setei para esperar um statusCode de erro nos testes que pediam
+            isso explicitamente. Todos estes testes possuem um comentário logo abaixo explicando a falha proposital.
+
+        Sobre a organização das suítes:
+            - Tive dificuldade no começo para entender a função delas mas revendo as aulas e com ajuda dos
+            colegas/monitores ficou mais claro.
+            - Optei por manter as suítes desenvolvidas em aula e adicionar as sugeridas pelo desafio.
+            - Desta forma é possível executar/gerar relatório de suítes específicas.
+            - Adicionei os testes que achei pertinentes às suites Smoke e Security. E as demais obedeci a organização
+            do desafio.
+
+        Sobre os testes, retornos, pegadinhas, etc:
+            Suite HealthCheck:
+                - O método que valida se a api está online retorna status code <201> "Created", creio eu que seria mais
+                correto retornar <200> "OK".
+
+            Suite Schema:
+                - Sem observações.
+
+            Suite Acceptance:
+                - Método que exclui reserva com sucesso retorna <201> "Created", se for por ser o contrário de criar a
+                reserva até faz sentido, mas creio que <200> "OK" seria mais adequado.
+                - Método que utiliza filtro checkout-checkout retorna <500>"Internal Server Error", apesar de não ser
+                errado, acredito que seria melhor esse tipo de erro ser tratado retornando algum erro de cliente como
+                <404> "Bad Request" <405> "Method Not Allowed" <406> "Not Acceptable".
+                - Método que cria uma reserva retorna <200> "OK", nesse caso sim, diferentemente do teste de ping e
+                 delete, o ideal acredito que seria <201> "Created".
+
+                - No teste que altera reserva com Basic Authorization tem um problema na documentação. O valor do campo
+                e nos exemplos está errado, escrito "AutoriSation" em vez de "Authorization". Demorei pra entender o
+                porque a requisição estava funcionando errado... Não sei se era um pegadinha ou um erro de fato.
+
+
+                    -Todos os testes de listagem a partir de filtros não possuem validação do body, apenas do statusCode,
+                    pois as reservas são muito dinâmicas a são criadas e excluidas o tempo todo. Uma validação do body
+                    de uma reserva recém criada que tenha sido excluída posteriormente quebraria o teste por retornar um
+                    array vazio. Validando apenaso  statusCode garantimos que a funcionalidade do filtro funciona
+                    independente dos valores.
+
+            Suite E2e:
+                - O método que tenta listar reservas com filtro mal formatado tem uma particularidade: So for indicado o
+                "?" após /booking, que indica filtro, qualquer coisa informada após retorna toda a lista de reservas,
+                já se não for usado o "?" é retornado <404> "Not Found", ou seja, de qualquer forma não vem um <500>
+                - Espero que "criar mais de um livro em sequenacia" seja um bug na tradução de "booking"
+                - Na pegadinha do <418> "I'm a teapot" creio q o retorno deveria ser um dos <400> ou até mesmo um <500>
+
+
+

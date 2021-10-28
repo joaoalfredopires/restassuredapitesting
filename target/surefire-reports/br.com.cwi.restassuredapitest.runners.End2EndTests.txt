@@ -1,0 +1,46 @@
+-------------------------------------------------------------------------------
+Test set: br.com.cwi.restassuredapitest.runners.End2EndTests
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 43.672 s <<< FAILURE! - in br.com.cwi.restassuredapitest.runners.End2EndTests
+validadeServerErrorWhenFilterIsWronglyFormatted(br.com.cwi.restassuredapitest.tests.booking.tests.GetBookingTest)  Time elapsed: 1.266 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <500> but was <200>.
+
+	at br.com.cwi.restassuredapitest.tests.booking.tests.GetBookingTest.validadeServerErrorWhenFilterIsWronglyFormatted(GetBookingTest.java:189)
+
+deleteNonexistentBookingTest(br.com.cwi.restassuredapitest.tests.booking.tests.DeleteBookingTest)  Time elapsed: 2.547 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <201> but was <405>.
+
+	at br.com.cwi.restassuredapitest.tests.booking.tests.DeleteBookingTest.deleteNonexistentBookingTest(DeleteBookingTest.java:62)
+
+deleteBookingWithoutAutorizationTest(br.com.cwi.restassuredapitest.tests.booking.tests.DeleteBookingTest)  Time elapsed: 2.86 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <201> but was <403>.
+
+	at br.com.cwi.restassuredapitest.tests.booking.tests.DeleteBookingTest.deleteBookingWithoutAutorizationTest(DeleteBookingTest.java:80)
+
+validateBookingUpdateUsingInvalidToken(br.com.cwi.restassuredapitest.tests.booking.tests.PutBookingTest)  Time elapsed: 4.328 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <403>.
+
+	at br.com.cwi.restassuredapitest.tests.booking.tests.PutBookingTest.validateBookingUpdateUsingInvalidToken(PutBookingTest.java:99)
+
+validateBookingUpdateWithoutToken(br.com.cwi.restassuredapitest.tests.booking.tests.PutBookingTest)  Time elapsed: 2.547 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <403>.
+
+	at br.com.cwi.restassuredapitest.tests.booking.tests.PutBookingTest.validateBookingUpdateWithoutToken(PutBookingTest.java:80)
+
+validateNonexistentBookingUpdate(br.com.cwi.restassuredapitest.tests.booking.tests.PutBookingTest)  Time elapsed: 2.283 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Expected status code <200> but was <405>.
+
+	at br.com.cwi.restassuredapitest.tests.booking.tests.PutBookingTest.validateNonexistentBookingUpdate(PutBookingTest.java:112)
+

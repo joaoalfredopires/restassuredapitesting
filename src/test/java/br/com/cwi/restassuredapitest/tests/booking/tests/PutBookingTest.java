@@ -63,6 +63,8 @@ public class PutBookingTest extends BaseTest {
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    //Testes da suíte E2e do desafio - Início
+
     @Test
     @Severity(SeverityLevel.CRITICAL)
     @Category({AllTests.class, End2EndTests.class, SecurityTests.class})
@@ -102,9 +104,9 @@ public class PutBookingTest extends BaseTest {
     }
 
     @Test
-    @Severity(SeverityLevel.CRITICAL)
+    @Severity(SeverityLevel.MINOR)
     @Category({AllTests.class, End2EndTests.class})
-    @DisplayName("Validar alteração de uma reserva não existente utilizando token")
+    @DisplayName("Validar alteração de uma reserva não existente")
     public void validateNonexistentBookingUpdate() throws Exception{
 
         putBookingRequest.updateBookingWithToken(99999998, postAuthRequest.getToken())
@@ -113,4 +115,6 @@ public class PutBookingTest extends BaseTest {
                 .body("size()", greaterThan(0));
         //Este teste falha propositalmente pois ao informar uma reserva inexistente retorna o statusCode(403)
     }
+
+    //Testes da suíte E2e do desafio - Fim
 }
